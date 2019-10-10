@@ -17,7 +17,7 @@ namespace UnionFindLab
             }
 
             unionSet.Union(unionItems[0], unionItems[1]);
-            //unionSet.Union(unionItems[2], unionItems[3]);
+            unionSet.Union(unionItems[2], unionItems[3]);
             unionSet.Union(unionItems[1], unionItems[2]);
 
             int numRoots = 0;
