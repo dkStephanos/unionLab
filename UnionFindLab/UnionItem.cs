@@ -7,7 +7,6 @@ namespace UnionFindLab
     class UnionItem
     {
         public UnionItem parent;
-        public int rank;
-        public int value;
+        public int rank, value;
     }
 }
