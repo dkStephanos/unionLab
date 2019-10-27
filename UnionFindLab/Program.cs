@@ -6,17 +6,30 @@ namespace UnionFindLab
     {
         static void Main(string[] args)
         {
-            UnionItem[] unionItems = new UnionItem[4];
-            UnionSet unionSet = new UnionSet();
+            
+            int numVertices, numEdges;
 
-            for (int i = 0; i < 4; i++)
-            {
-                unionItems[i] = new UnionItem();
-                unionItems[i].value = i + 1;
-                unionSet.MakeSet(unionItems[i]);
-            }
+            Console.WriteLine("Enter number of vertices:  ");
+            numVertices = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("\n\nEnter number of edges:  ");
+            numEdges = Int32.Parse(Console.ReadLine());
 
-            unionSet.Union(unionItems[0], unionItems[1]);
+            UnionSet unionSet = new UnionSet(numVertices, numEdges);
+
+            for (int i = 0; i < numEdges; i++)
+			{
+                Console.WriteLine("\n\nEnter source of edge" + i + ":  ");
+                unionSet.edges[i].source = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("\n\nEnter destination of edge" + i + ":  ");
+                unionSet.edges[i].destination = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("\n\nEnter weight of edge" + i + ":  ");
+                unionSet.edges[i].weight = Int32.Parse(Console.ReadLine());
+			}
+
+            unionSet.KruskalMST();
+            unionSet.PrintMST();
+
+            /*unionSet.Union(unionItems[0], unionItems[1]);
             unionSet.Union(unionItems[2], unionItems[3]);
             unionSet.Union(unionItems[1], unionItems[2]);
 
@@ -66,7 +79,7 @@ namespace UnionFindLab
             }
 
             Console.WriteLine(output);
-          
+          */
 
             Console.ReadLine();
 
