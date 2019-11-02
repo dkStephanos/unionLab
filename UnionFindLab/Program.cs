@@ -1,5 +1,12 @@
 ﻿using System;
 
+// ---------------------------------------------------------------------------
+// File name: Program.cs
+// Project name: FindMST
+// ---------------------------------------------------------------------------
+// Creator’s name and email: Koi Stephanos, stephanos@etsu.edu
+// Course-Section://Creation Date:  Algorithms, 11/2/2019
+// ---------------------------------------------------------------------------
 namespace UnionFindLab
 {
     class Program
@@ -7,15 +14,19 @@ namespace UnionFindLab
         static void Main(string[] args)
         {
             
-            int numVertices, numEdges;
+            int numVertices,                        //Number of vertices
+                    numEdges;                       //Number of edges
 
+            //Collects number of vertices and edges from user
             Console.WriteLine("Enter number of vertices:  ");
             numVertices = Int32.Parse(Console.ReadLine());
             Console.WriteLine("\n\nEnter number of edges:  ");
             numEdges = Int32.Parse(Console.ReadLine());
 
+            //Creates unionSet based on user input
             UnionSet unionSet = new UnionSet(numVertices, numEdges);
 
+            //Collects edges data from user
             for (int i = 0; i < numEdges; i++)
 			{
                 Console.WriteLine("\n\nEnter source of edge" + i + ":  ");
@@ -26,9 +37,11 @@ namespace UnionFindLab
                 unionSet.edges[i].weight = Int32.Parse(Console.ReadLine());
 			}
 
+            //Run the Kruskal MST algortihm on edges, and print results
             unionSet.KruskalMST();
             unionSet.PrintMST();
 
+            //Prior driver code for UnionSet demonstration
             /*unionSet.Union(unionItems[0], unionItems[1]);
             unionSet.Union(unionItems[2], unionItems[3]);
             unionSet.Union(unionItems[1], unionItems[2]);
@@ -81,9 +94,8 @@ namespace UnionFindLab
             Console.WriteLine(output);
           */
 
+            //Wait for user input to show data
             Console.ReadLine();
-
-
         }
     }
 }
