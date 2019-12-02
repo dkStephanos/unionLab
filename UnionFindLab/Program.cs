@@ -16,12 +16,14 @@ namespace UnionFindLab
             
             int numVertices,                        //Number of vertices
                     numEdges;                       //Number of edges
+            string[] inputLine;                       //Use for console input
 
             //Collects number of vertices and edges from user
-            Console.WriteLine("Enter number of vertices:  ");
-            numVertices = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("\n\nEnter number of edges:  ");
-            numEdges = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter number of vertices and edges:  ");
+            inputLine = Console.ReadLine().Split(" ");
+            numVertices = Int32.Parse(inputLine[0]);
+            //Console.WriteLine("\n\nEnter number of edges:  ");
+            numEdges = Int32.Parse(inputLine[1]);
 
             //Creates unionSet based on user input
             UnionSet unionSet = new UnionSet(numVertices, numEdges);
@@ -29,13 +31,17 @@ namespace UnionFindLab
             //Collects edges data from user
             for (int i = 0; i < numEdges; i++)
 			{
-                Console.WriteLine("\n\nEnter source of edge" + i + ":  ");
+                /*Console.WriteLine("\n\nEnter source of edge" + i + ":  ");
                 unionSet.edges[i].source = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("\n\nEnter destination of edge" + i + ":  ");
                 unionSet.edges[i].destination = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("\n\nEnter weight of edge" + i + ":  ");
-                unionSet.edges[i].weight = Int32.Parse(Console.ReadLine());
-			}
+                unionSet.edges[i].weight = Int32.Parse(Console.ReadLine());*/
+                inputLine = Console.ReadLine().Split(" ");
+                unionSet.edges[i].source = Int32.Parse(inputLine[0]);
+                unionSet.edges[i].destination = Int32.Parse(inputLine[1]);
+                unionSet.edges[i].weight = Int32.Parse(inputLine[2]);
+            }
 
             //Run the Kruskal MST algortihm on edges, and print results
             unionSet.KruskalMST();

@@ -103,8 +103,8 @@ namespace UnionFindLab
                 nextEdge = edges[currentEdgeIndex++]; 
                 
                 //Determines the set status of each end of the edge
-                UnionItem x = FindSet(unionItems[nextEdge.source]); 
-                UnionItem y = FindSet(unionItems[nextEdge.destination]); 
+                UnionItem x = FindSet(unionItems[nextEdge.source - 1]); 
+                UnionItem y = FindSet(unionItems[nextEdge.destination - 1]); 
                 
                 //Check for cycle, by comparing parents of each node
                 if (x != y) 
@@ -116,13 +116,19 @@ namespace UnionFindLab
             }
             //Sets our edges array to the newly created MST
             edges = MST;
-        } 
+        }
 
         //Prints the MST
-        public void PrintMST() {
-            Console.WriteLine("\n\nThe MST for the entered graph:\n"); 
-            for (int i = 0; i < edges.Length; ++i) 
-                    Console.WriteLine("Nodes: " + edges[i].source + " -- " + edges[i].destination + ", Weight = " + edges[i].weight); 
-        }                  
+        public void PrintMST()
+        {
+            int totalWeight = 0;
+            Console.WriteLine("\n\nThe MST for the entered graph:\n");
+            for (int i = 0; i < edges.Length; ++i)
+            {
+                Console.WriteLine("Nodes: " + edges[i].source + " -- " + edges[i].destination + ", Weight = " + edges[i].weight);
+                totalWeight += edges[i].weight;
+            }
+            Console.WriteLine("\n\nTotal weight of MST:  " + totalWeight);
+        }
     }
 }
